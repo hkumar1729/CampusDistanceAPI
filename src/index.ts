@@ -3,8 +3,10 @@ import client from './db/client';
 import schema from './inputSchema/schema';
 import mysql from 'mysql2/promise';
 import { distance } from './distance/haversine';
+import cors from 'cors'
 
 const app = express();
+app.use(cors())
 app.use(express.json())
 
 app.get('/',(req: Request, res: Response)=>{
