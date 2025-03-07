@@ -3,10 +3,10 @@
 
 import mysql from 'mysql2';
 
-// Load environment variables from the .env file
+// Loads environment variables from the .env file
 require('dotenv').config();
 
-// Create the MySQL client
+// Client creation
 const client = mysql.createConnection({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -15,7 +15,7 @@ const client = mysql.createConnection({
   port: process.env.MYSQLPORT ? parseInt(process.env.MYSQLPORT) : 3306
 });
 
-// Create the table if it doesn't exist
+// Table creation if doesn't exist
 const createTable = () => {
   const createTableQuery = `
     CREATE TABLE IF NOT EXISTS schools (
@@ -38,5 +38,4 @@ const createTable = () => {
 // Call the createTable function to ensure the table is created
 createTable();
 
-// Export the client for use in other files
 export default client;
